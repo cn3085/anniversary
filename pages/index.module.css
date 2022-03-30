@@ -1,0 +1,23 @@
+.title_area{
+    margin-top: 15%;
+}
+
+.main_title{
+    text-align: center;
+    font-size: 3em;
+    font-family: 'Palette Mosaic', cursive;
+    font-family: 'Rock 3D', cursive;
+}
+
+.sub_title{
+    text-align: center;
+}
+
+.photo_area{
+    display: flex;
+}
+
+.photo_area > div {
+    width: 30%;
+  flex-grow: 1;
+}

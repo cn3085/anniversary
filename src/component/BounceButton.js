@@ -4,7 +4,7 @@ import { Transition } from "semantic-ui-react";
 import JSConfetti from "js-confetti";
 
 export function BounceButton({ img }) {
-  const [isHide, setIsHide] = useState(true);
+  const [isHide, setIsHide] = useState(false);
   const confettiRef = useRef(null);
 
   function popEmoji() {
@@ -21,21 +21,25 @@ export function BounceButton({ img }) {
       confettiRef.current = new JSConfetti();
     }
 
-    const id = setInterval(() => {
-      setIsHide((hide) => !hide);
-    }, 1000);
+    let id = null;
+    const timeoutId = setTimeout(() => {
+      popEmoji();
+      id = setInterval(() => {
+        setIsHide((hide) => !hide);
+      }, 1000);
+    }, 3000);
+
     return () => {
+      clearTimeout(timeoutId);
       clearInterval(id);
     };
   }, []);
 
   return (
-    <div>
-      <Transition animation="pulse" duration="500" visible={isHide}>
-        <div className={styles.baby_photo} onClick={popEmoji}>
-          <img src={img} alt="node" />
-        </div>
-      </Transition>
-    </div>
+    <Transition animation="pulse" duration="500" visible={isHide}>
+      <div className={styles.baby_photo} onClick={popEmoji}>
+        <img src={img} alt="node" />
+      </div>
+    </Transition>
   );
 }

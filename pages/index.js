@@ -5,7 +5,7 @@ import { BabyPhoto } from "../src/component/BabyPhoto";
 import { BounceButton } from "../src/component/BounceButton";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
-import styles from "../styles/Home.module.css";
+import styles from "./index.module.css";
 
 export default function Home() {
   const { width, height } = useWindowSize();
@@ -14,6 +14,12 @@ export default function Home() {
 
   return (
     <React.StrictMode>
+      <Head>
+        <title>hello</title>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Palette+Mosaic&family=Rock+3D&display=swap');
+        </style>
+      </Head>
       <>
         {/* <Confetti width={width} height={height} /> */}
         <Confetti
@@ -23,7 +29,11 @@ export default function Home() {
           numberOfPieces={400}
           tweenDuration={10000}
         />
-        <div>
+        <div className={styles.title_area}>
+          <p className={styles.main_title}>2nd anniversary</p>
+          <p className={styles.sub_title}>나💖너 2주년</p>
+        </div>
+        <div className={styles.photo_area}>
           <BabyPhoto
             direction={"right"}
             img={"/images/node.png"}

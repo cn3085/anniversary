@@ -17,16 +17,14 @@ export function BabyPhoto({ direction, img, delay }) {
   }, []);
 
   return (
-    <div>
-      <Transition
-        visible={isHide}
-        animation={"fade " + direction}
-        duration={1300}
-      >
-        <div className={styles.baby_photo}>
-          <img src={img} alt="node" />
-        </div>
-      </Transition>
-    </div>
+    <Transition
+      visible={isHide}
+      animation={"fade " + direction}
+      duration={1300}
+    >
+      <div className={styles.baby_photo}>
+        <img src={img} alt="node" />
+      </div>
+    </Transition>
   );
 }
