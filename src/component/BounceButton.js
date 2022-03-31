@@ -36,10 +36,12 @@ export function BounceButton({ img }) {
   }, []);
 
   return (
-    <Transition animation="pulse" duration="500" visible={isHide}>
-      <div className={styles.baby_photo} onClick={popEmoji}>
-        <img src={img} alt="node" />
-      </div>
-    </Transition>
+    <div className={styles.bounce_area}>
+      <Transition animation="pulse" duration="500" visible={isHide}>
+        <div className={styles.baby_photo} onClick={popEmoji}>
+          <img src={img} alt="node" />
+        </div>
+      </Transition>
+    </div>
   );
 }

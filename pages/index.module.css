@@ -1,3 +1,6 @@
+.background{
+}
+
 .title_area{
     margin-top: 15%;
 }
@@ -15,9 +18,27 @@
 
 .photo_area{
     display: flex;
+    margin: 0 20px;
 }
 
 .photo_area > div {
     width: 30%;
   flex-grow: 1;
+}
+
+.gift_area{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20%;
+    height: 100%;
+}
+
+.gift_lock{
+    position: relative;
+    font-size: 75px;
+}
+
+.gift_list{
+    font-size: 75px;
 }

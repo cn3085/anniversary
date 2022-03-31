@@ -20,7 +20,7 @@ export default function Home() {
           @import url('https://fonts.googleapis.com/css2?family=Palette+Mosaic&family=Rock+3D&display=swap');
         </style>
       </Head>
-      <>
+      <div className={styles.background}>
         {/* <Confetti width={width} height={height} /> */}
         <Confetti
           width="390"
@@ -31,7 +31,7 @@ export default function Home() {
         />
         <div className={styles.title_area}>
           <p className={styles.main_title}>2nd anniversary</p>
-          <p className={styles.sub_title}>나💖너 2주년</p>
+          <p className={styles.sub_title}>대충축하문구</p>
         </div>
         <div className={styles.photo_area}>
           <BabyPhoto
@@ -46,7 +46,15 @@ export default function Home() {
             delay={1500}
           />
         </div>
-      </>
+        <div className={styles.gift_area}>
+          <div className={styles.gift_lock}>
+            🔒
+          </div>
+          <div className={styles.gift_list}>
+            🎁🧧
+          </div>
+        </div>
+      </div>
     </React.StrictMode>
   );
 }

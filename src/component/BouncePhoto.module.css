@@ -1,3 +1,7 @@
+.bounce_area{
+  display: flex;
+  align-self: center;
+}
 .baby_photo img {
   width: 100%;
 }
