@@ -37,6 +37,8 @@
 .gift_lock{
     position: relative;
     font-size: 75px;
+    display: inline;
+    border: 1px solid red;
 }
 
 .gift_list{

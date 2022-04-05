@@ -1,16 +1,31 @@
 import Head from "next/head";
-import Image from "next/image";
 import React from "react";
 import { BabyPhoto } from "../src/component/BabyPhoto";
 import { BounceButton } from "../src/component/BounceButton";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
 import styles from "./index.module.css";
+import { Button, Modal } from "semantic-ui-react";
+import modalReducer from '../src/reducer/quiz_modal_reduce';
+import quizReducer from '../src/reducer/quiz_reduce';
 
 export default function Home() {
   const { width, height } = useWindowSize();
 
-  console.log(width, height);
+  //modal
+  const [modalState, modalDispatch] = React.useReducer(modalReducer, {
+    open: false,
+    dimmer: undefined,
+  })
+  const { open, dimmer } = modalState;
+
+  //quiz
+  const [quizState, quizDispatch] = React.useReducer(quizReducer, {
+    quiz : [], //선택된 퀴즈
+    sizeOfQuiz : 5,
+    isLock : true
+  })
+  const {quiz, isLock} = quizState;
 
   return (
     <React.StrictMode>
@@ -47,13 +62,30 @@ export default function Home() {
           />
         </div>
         <div className={styles.gift_area}>
-          <div className={styles.gift_lock}>
-            🔒
-          </div>
+          {isLock && (
+            <div className={styles.gift_lock} onClick={() => modalDispatch({ type: 'OPEN_MODAL', dimmer: 'blurring' })}>
+              🔒
+            </div>
+          )}
           <div className={styles.gift_list}>
             🎁🧧
           </div>
         </div>
+        <Modal
+          basic
+          dimmer={dimmer}
+          open={open}
+          onClose={() => modalDispatch({ type: 'CLOSE_MODAL' })}
+        >
+          <Modal.Header>🤔Use Google's location service?</Modal.Header>
+          <Modal.Content>
+            <Button circular color='facebook' icon='facebook' onClick={() => modalDispatch({ type: 'CLOSE_MODAL' })} />
+          </Modal.Content>
+        </Modal>
+        {/* {isShowQuiz && (
+          <QuizBox />
+        )} */}
+        
       </div>
     </React.StrictMode>
   );
