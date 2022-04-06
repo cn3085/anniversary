@@ -6,8 +6,8 @@ import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
 import styles from "./index.module.css";
 import { Button, Modal } from "semantic-ui-react";
-import modalReducer from '../src/reducer/quiz_modal_reduce';
-import quizReducer from '../src/reducer/quiz_reduce';
+import modalReducer from "../src/reducer/quiz_modal_reduce";
+import quizReducer from "../src/reducer/quiz_reduce";
 
 export default function Home() {
   const { width, height } = useWindowSize();
@@ -16,23 +16,29 @@ export default function Home() {
   const [modalState, modalDispatch] = React.useReducer(modalReducer, {
     open: false,
     dimmer: undefined,
-  })
+  });
   const { open, dimmer } = modalState;
 
   //quiz
   const [quizState, quizDispatch] = React.useReducer(quizReducer, {
-    quiz : [], //선택된 퀴즈
-    sizeOfQuiz : 5,
-    isLock : true
-  })
-  const {quiz, isLock} = quizState;
+    quizzes: [
+      {
+        q: "",
+        answers: [],
+      },
+    ], //선택된 퀴즈
+    indexOfQuiz: 0,
+    isLock: true,
+  });
+  const { quizzes, indexOfQuiz, isLock } = quizState;
 
   return (
     <React.StrictMode>
       <Head>
         <title>hello</title>
         <style>
-          @import url('https://fonts.googleapis.com/css2?family=Palette+Mosaic&family=Rock+3D&display=swap');
+          @import
+          url('https://fonts.googleapis.com/css2?family=Palette+Mosaic&family=Rock+3D&display=swap');
         </style>
       </Head>
       <div className={styles.background}>
@@ -63,29 +69,40 @@ export default function Home() {
         </div>
         <div className={styles.gift_area}>
           {isLock && (
-            <div className={styles.gift_lock} onClick={() => modalDispatch({ type: 'OPEN_MODAL', dimmer: 'blurring' })}>
+            <div
+              className={styles.gift_lock}
+              onClick={() => {
+                modalDispatch({ type: "OPEN_MODAL", dimmer: "blurring" });
+                quizDispatch({ type: "START" });
+              }}
+            >
               🔒
             </div>
           )}
-          <div className={styles.gift_list}>
-            🎁🧧
-          </div>
+          <div className={styles.gift_list}>🎁🧧</div>
         </div>
         <Modal
           basic
           dimmer={dimmer}
           open={open}
-          onClose={() => modalDispatch({ type: 'CLOSE_MODAL' })}
+          onClose={() => modalDispatch({ type: "CLOSE_MODAL" })}
         >
-          <Modal.Header>🤔Use Google's location service?</Modal.Header>
+          <Modal.Header>🤔{quizzes[indexOfQuiz].q}</Modal.Header>
           <Modal.Content>
-            <Button circular color='facebook' icon='facebook' onClick={() => modalDispatch({ type: 'CLOSE_MODAL' })} />
+            {quizzes[indexOfQuiz].answers.map((e, i) => (
+              <Button
+                key={i}
+                circular
+                color="facebook"
+                icon="facebook"
+                onClick={() => modalDispatch({ type: "CLOSE_MODAL" })}
+              />
+            ))}
           </Modal.Content>
         </Modal>
         {/* {isShowQuiz && (
           <QuizBox />
         )} */}
-        
       </div>
     </React.StrictMode>
   );
