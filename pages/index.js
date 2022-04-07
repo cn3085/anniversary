@@ -41,6 +41,7 @@ export default function Home() {
           name="viewport"
           content="width=device-width, initial-scale=1.0"
         ></meta>
+        <meta property="og:url" content="https://anniversary-chi.vercel.app" />
         <meta property="og:title" content="카카오 제목"></meta>
         <meta property="og:description" content="내용 요약"></meta>
         <meta
