@@ -51,8 +51,8 @@ export default function Home() {
           tweenDuration={10000}
         />
         <div className={styles.title_area}>
-          <p className={styles.main_title}>2nd anniversary</p>
-          <p className={styles.sub_title}>대충축하문구</p>
+          <p className={styles.main_title}>abc</p>
+          <p className={styles.sub_title}>가나다라</p>
         </div>
         <div className={styles.photo_area}>
           <BabyPhoto
@@ -79,7 +79,7 @@ export default function Home() {
               🔒
             </div>
           )}
-          <div className={styles.gift_list}>🎁🧧</div>
+          <div className={styles.gift_list}>gift</div>
         </div>
         <Modal
           basic
@@ -100,9 +100,6 @@ export default function Home() {
             ))}
           </Modal.Content>
         </Modal>
-        {/* {isShowQuiz && (
-          <QuizBox />
-        )} */}
       </div>
     </React.StrictMode>
   );

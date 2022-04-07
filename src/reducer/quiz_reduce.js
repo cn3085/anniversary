@@ -1,4 +1,5 @@
 import { quizzes } from "../data/quiz.json";
+import { shuffle } from "../util/Util";
 
 export default function quizReducer(state, action) {
   switch (action.type) {
@@ -16,7 +17,7 @@ export default function quizReducer(state, action) {
     case "START":
       return {
         ...state,
-        quizzes: quizzes,
+        quizzes: shuffle(quizzes),
       };
     case "CORRECT":
       return {
