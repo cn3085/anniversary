@@ -7,17 +7,15 @@ export default function Document() {
         <meta charSet="UTF-8"></meta>
         <meta name="description" content="가나다라설명"></meta>
         <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        ></meta>
-        <meta property="og:url" content="https://anniversary-chi.vercel.app" />
+          property="og:url"
+          content="https://anniversary.2nd-jju-taeng.tk/"
+        />
         <meta property="og:title" content="카카오 제목"></meta>
         <meta property="og:description" content="내용 요약"></meta>
         <meta
           property="og:image"
-          content="http://anniversary-chi.vercel.app/images/aws-logo.png"
+          content="https://anniversary.2nd-jju-taeng.tk/images/aws-logo.png"
         ></meta>
-        <title>hello</title>
       </Head>
       <body>
         <Main />

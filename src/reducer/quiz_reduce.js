@@ -3,31 +3,22 @@ import { shuffle } from "../util/Util";
 
 export default function quizReducer(state, action) {
   switch (action.type) {
-    case "INIT":
-      return {
-        quizzes: [
-          {
-            q: "",
-            answers: [],
-          },
-        ],
-        indexOfQuiz: 0,
-        isLock: true,
-      };
     case "START":
       return {
-        ...state,
-        quizzes: shuffle(quizzes),
+        quizzes: shuffle(quizzes).slice(0, state.numberOfQuiz),
+        indexOfQuiz: 0,
+        isLock: true,
+        numberOfQuiz: 2,
       };
     case "CORRECT":
       return {
         ...state,
         indexOfQuiz: state.indexOfQuiz + 1,
       };
-    // case "WRONG":
-    //   return {};
-    // case "UNLOCK":
-    //   return {};
+    case "WRONG":
+      return {};
+    case "UNLOCK":
+      return {};
     default:
       throw new Error();
   }

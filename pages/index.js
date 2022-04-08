@@ -11,6 +11,7 @@ import quizReducer from "../src/reducer/quiz_reduce";
 
 export default function Home() {
   const { width, height } = useWindowSize();
+  console.log(width, height);
 
   //modal
   const [modalState, modalDispatch] = React.useReducer(modalReducer, {
@@ -29,22 +30,27 @@ export default function Home() {
     ], //선택된 퀴즈
     indexOfQuiz: 0,
     isLock: true,
+    numberOfQuiz: 2,
   });
   const { quizzes, indexOfQuiz, isLock } = quizState;
 
   return (
     <React.StrictMode>
       <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+        ></meta>
+        <title>hello</title>
         <style>
           @import
           url('https://fonts.googleapis.com/css2?family=Palette+Mosaic&family=Rock+3D&display=swap');
         </style>
       </Head>
       <div className={styles.background}>
-        {/* <Confetti width={width} height={height} /> */}
         <Confetti
-          width="390"
-          height="844"
+          width={width}
+          height={height}
           recycle={false}
           numberOfPieces={400}
           tweenDuration={10000}
@@ -71,8 +77,8 @@ export default function Home() {
             <div
               className={styles.gift_lock}
               onClick={() => {
-                modalDispatch({ type: "OPEN_MODAL", dimmer: "blurring" });
                 quizDispatch({ type: "START" });
+                modalDispatch({ type: "OPEN_MODAL", dimmer: "blurring" });
               }}
             >
               🔒
@@ -94,7 +100,11 @@ export default function Home() {
                 circular
                 color="facebook"
                 icon="facebook"
-                onClick={() => modalDispatch({ type: "CLOSE_MODAL" })}
+                onClick={
+                  e.isAnswer
+                    ? () => quizDispatch({ type: "CORRECT" })
+                    : () => quizDispatch({ type: "WRONG" })
+                }
               />
             ))}
           </Modal.Content>
