@@ -9,7 +9,7 @@ export function BounceButton({ img }) {
 
   function popEmoji() {
     confettiRef.current.addConfetti({
-      emojis: ["🇰🇷", "💸", "💵", "💖"],
+      emojis: ["😍", "🥰", "💖", "💑"],
       emojiSize: 256,
       confettiNumber: 30,
       confettiRadius: 6,

@@ -5,110 +5,88 @@ import { BounceButton } from "../src/component/BounceButton";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
 import styles from "./index.module.css";
-import { Button, Modal } from "semantic-ui-react";
-import modalReducer from "../src/reducer/quiz_modal_reduce";
-import quizReducer from "../src/reducer/quiz_reduce";
+import { Button, Icon, Modal } from "semantic-ui-react";
+import modalReducer from '../src/reducer/quiz_modal_reduce';
+import quizReducer from '../src/reducer/quiz_reduce';
 
 export default function Home() {
   const { width, height } = useWindowSize();
-  console.log(width, height);
 
   //modal
   const [modalState, modalDispatch] = React.useReducer(modalReducer, {
     open: false,
     dimmer: undefined,
-  });
+  })
   const { open, dimmer } = modalState;
 
   //quiz
   const [quizState, quizDispatch] = React.useReducer(quizReducer, {
-    quizzes: [
-      {
-        q: "",
-        answers: [],
-      },
-    ], //선택된 퀴즈
-    indexOfQuiz: 0,
-    isLock: true,
-    numberOfQuiz: 2,
-  });
-  const { quizzes, indexOfQuiz, isLock } = quizState;
+    quiz : [], //선택된 퀴즈
+    sizeOfQuiz : 5,
+    isLock : true
+  })
+  const {quiz, isLock} = quizState;
 
   return (
     <React.StrictMode>
       <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        ></meta>
         <title>hello</title>
         <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Palette+Mosaic&family=Rock+3D&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Palette+Mosaic&family=Rock+3D&display=swap');
         </style>
       </Head>
       <div className={styles.background}>
+        {/* <Confetti width={width} height={height} /> */}
         <Confetti
-          width={width}
-          height={height}
+          width="390"
+          height="844"
           recycle={false}
           numberOfPieces={400}
           tweenDuration={10000}
         />
         <div className={styles.title_area}>
-          <p className={styles.main_title}>abc</p>
-          <p className={styles.sub_title}>가나다라</p>
+          <p className={styles.main_title}>2nd anniversary</p>
+          <p className={styles.sub_title}>대충축하문구</p>
         </div>
         <div className={styles.photo_area}>
           <BabyPhoto
             direction={"right"}
-            img={"/images/node.png"}
+            img={"/images/jy.png"}
             delay={1000}
           />
-          <BounceButton img={"/images/aws-logo.png"} />
+          <BounceButton img={"/images/moon.png"} />
           <BabyPhoto
             direction={"left"}
-            img={"/images/thumb.png"}
+            img={"/images/jy.png"}
             delay={1500}
           />
         </div>
         <div className={styles.gift_area}>
-          {isLock && (
-            <div
-              className={styles.gift_lock}
-              onClick={() => {
-                quizDispatch({ type: "START" });
-                modalDispatch({ type: "OPEN_MODAL", dimmer: "blurring" });
-              }}
-            >
-              🔒
+          {isLock ? (
+            <div className={styles.gift_lock} onClick={() => modalDispatch({ type: 'OPEN_MODAL', dimmer: 'blurring' })}>
+              <Icon name="lock"/>
+            </div>
+          ) :(
+            <div className={styles.gift_list}>
+              🎁
             </div>
           )}
-          <div className={styles.gift_list}>gift</div>
         </div>
         <Modal
           basic
           dimmer={dimmer}
           open={open}
-          onClose={() => modalDispatch({ type: "CLOSE_MODAL" })}
+          onClose={() => modalDispatch({ type: 'CLOSE_MODAL' })}
         >
-          <Modal.Header>🤔{quizzes[indexOfQuiz].q}</Modal.Header>
+          <Modal.Header>🤔Use Google's location service?</Modal.Header>
           <Modal.Content>
-            {quizzes[indexOfQuiz].answers.map((e, i) => (
-              <Button
-                key={i}
-                circular
-                color="facebook"
-                icon="facebook"
-                onClick={
-                  e.isAnswer
-                    ? () => quizDispatch({ type: "CORRECT" })
-                    : () => quizDispatch({ type: "WRONG" })
-                }
-              />
-            ))}
+            <Button circular color='facebook' icon='facebook' onClick={() => modalDispatch({ type: 'CLOSE_MODAL' })} />
           </Modal.Content>
         </Modal>
+        {/* {isShowQuiz && (
+          <QuizBox />
+        )} */}
+        
       </div>
     </React.StrictMode>
   );

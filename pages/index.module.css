@@ -1,8 +1,33 @@
 .background{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    /* justify-content: center; */
+    background-image: url(/images/bg.jpg);
+    background-size: cover;
+}
+
+.img_area{
+    height:300px;
+    font-size:0;
+}  
+.img_area:after{
+    display:inline-block;
+    height:100%;
+    content:"";
+    vertical-align:middle;
+}
+.img_area img{
+    vertical-align:middle;
 }
 
 .title_area{
     margin-top: 15%;
+    color: #e4e0c4;
 }
 
 .main_title{
@@ -19,6 +44,7 @@
 .photo_area{
     display: flex;
     margin: 0 20px;
+    height: 30vh;
 }
 
 .photo_area > div {

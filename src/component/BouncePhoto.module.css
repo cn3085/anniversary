@@ -2,6 +2,9 @@
   display: flex;
   align-self: center;
 }
+.bounce_area > div {
+  width: 100%;
+}
 .baby_photo img {
   width: 100%;
 }

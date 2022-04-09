@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./BabyPhoto.module.css";
+import globalStyles from "../../pages/index.module.css"
 import { Transition } from "semantic-ui-react";
 
 export function BabyPhoto({ direction, img, delay }) {
@@ -21,9 +22,9 @@ export function BabyPhoto({ direction, img, delay }) {
       <Transition
         visible={isHide}
         animation={"fade " + direction}
-        duration={1300}
+        duration={5000}
       >
-        <div className={styles.baby_photo}>
+        <div className={[styles.baby_photo, globalStyles.img_area]}>
           <img src={img} alt="node" />
         </div>
       </Transition>
