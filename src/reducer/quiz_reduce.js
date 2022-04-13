@@ -1,20 +1,35 @@
 import { quizzes } from "../data/quiz.json";
 import { shuffle } from "../util/Util";
 
-export default function quizReducer(state, action) {
+export const initialState = {
+  quizzes: [{ q: "", answers: [] }],
+  sizeOfQuiz: 2,
+  isLock: true,
+  numberOfQuiz: 0,
+};
+
+export function quizReducer(state, action) {
+  console.log(action.type);
   switch (action.type) {
     case "START":
       return {
-        quizzes: shuffle(quizzes).slice(0, state.numberOfQuiz),
-        indexOfQuiz: 0,
-        isLock: true,
-        numberOfQuiz: 2,
+        ...state,
+        quizzes: shuffle(quizzes).slice(0, state.sizeOfQuiz),
+        numberOfQuiz: 0,
       };
     case "CORRECT":
-      return {
-        ...state,
-        indexOfQuiz: state.indexOfQuiz + 1,
-      };
+      if (state.numberOfQuiz === state.sizeOfQuiz) {
+        return {
+          ...initialState,
+          isLock: false,
+        };
+      } else {
+        console.log({ ...state, numberOfQuiz: state.numberOfQuiz + 1 });
+        return {
+          ...state,
+          numberOfQuiz: state.numberOfQuiz + 1,
+        };
+      }
     case "WRONG":
       return {};
     case "UNLOCK":
