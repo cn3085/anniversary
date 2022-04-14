@@ -12,7 +12,6 @@
 }
 
 .img_area{
-    height:300px;
     font-size:0;
 }  
 .img_area:after{
@@ -42,6 +41,7 @@
 }
 
 .photo_area{
+    width: 100%;
     display: flex;
     margin: 0 20px;
     height: 30vh;
@@ -49,7 +49,11 @@
 
 .photo_area > div {
     width: 30%;
-  flex-grow: 1;
+    flex-grow: 1;
+}
+
+.photo_area div {
+    border: 1px solid red;
 }
 
 .gift_area{

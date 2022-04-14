@@ -18,13 +18,14 @@ export function quizReducer(state, action) {
         numberOfQuiz: 0,
       };
     case "CORRECT":
-      if (state.numberOfQuiz === state.sizeOfQuiz) {
+      if (state.numberOfQuiz + 1 === state.sizeOfQuiz) {
+        console.log('CORRECT-end:');
         return {
           ...initialState,
           isLock: false,
         };
       } else {
-        console.log({ ...state, numberOfQuiz: state.numberOfQuiz + 1 });
+        console.log('CORRECT-ing:');
         return {
           ...state,
           numberOfQuiz: state.numberOfQuiz + 1,

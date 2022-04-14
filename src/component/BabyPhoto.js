@@ -22,7 +22,7 @@ export function BabyPhoto({ direction, img, delay }) {
       <Transition
         visible={isHide}
         animation={"fade " + direction}
-        duration={5000}
+        duration={1000}
       >
         <div className={[styles.baby_photo, globalStyles.img_area]}>
           <img src={img} alt="node" />

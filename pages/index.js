@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React from "react";
+import React, { useState } from "react";
 import { BabyPhoto } from "../src/component/BabyPhoto";
 import { BounceButton } from "../src/component/BounceButton";
 import useWindowSize from "react-use/lib/useWindowSize";
@@ -8,6 +8,7 @@ import styles from "./index.module.css";
 import { Button, Icon, Modal } from "semantic-ui-react";
 import modalReducer from "../src/reducer/quiz_modal_reduce";
 import { quizReducer, initialState } from "../src/reducer/quiz_reduce";
+import Letter from "../src/component/Letter";
 
 export default function Home() {
   const { width, height } = useWindowSize();
@@ -22,6 +23,12 @@ export default function Home() {
   //quiz
   const [quizState, quizDispatch] = React.useReducer(quizReducer, initialState);
   const { quizzes, numberOfQuiz, isLock } = quizState;
+
+  //letter
+  const [isShowLetter, setIsShowLetter] = useState(false);
+  function toggleLetter(){
+    setIsShowLetter( isShow => !isShow)
+  }
 
   return (
     <React.StrictMode>
@@ -60,34 +67,41 @@ export default function Home() {
               }}
             >
               <Icon name="lock" />
-              <Modal
-                basic
-                dimmer={dimmer}
-                open={open}
-                onClose={() => modalDispatch({ type: "CLOSE_MODAL" })}
-              >
-                <Modal.Header>{quizzes[numberOfQuiz].q}</Modal.Header>
-                <Modal.Content>
-                  {quizzes[numberOfQuiz].answers.map((ele, i) => (
-                    <Button
-                      key={i}
-                      circular
-                      color="facebook"
-                      icon="facebook"
-                      onClick={
-                        ele.isAnswer
-                          ? () => quizDispatch({ type: "CORRECT" })
-                          : () => () => quizDispatch({ type: "WRONG" })
-                      }
-                    />
-                  ))}
-                </Modal.Content>
-              </Modal>
             </div>
           ) : (
-            <div className={styles.gift_list}>🎁</div>
+            <>
+              <div className={styles.gift_list} onClick={() => toggleLetter()}>💌</div>
+              <Letter isShowLetter={isShowLetter}/>
+            </>
           )}
         </div>
+
+        { isLock && 
+        (
+          <Modal
+            basic
+            dimmer={dimmer}
+            open={open}
+            onClose={() => modalDispatch({ type: "CLOSE_MODAL" })}
+          >
+            <Modal.Header>{quizzes[numberOfQuiz].q}</Modal.Header>
+            <Modal.Content>
+              {quizzes[numberOfQuiz].answers.map((ele, i) => (
+                <Button
+                  key={i}
+                  circular
+                  color="facebook"
+                  icon="facebook"
+                  onClick={
+                    ele.isAnswer
+                      ? () => quizDispatch({ type: "CORRECT" })
+                      : () => quizDispatch({ type: "WRONG" })
+                  }
+                />
+              ))}
+            </Modal.Content>
+          </Modal>
+        )}
       </div>
     </React.StrictMode>
   );
