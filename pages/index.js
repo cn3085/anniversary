@@ -38,7 +38,7 @@ export default function Home() {
   function popWrongEmoji(emojis) {
     confettiRef.current.addConfetti({
       emojis: emojis,
-      emojiSize: 96,
+      emojiSize: 256,
       confettiNumber: 32,
       confettiRadius: 6,
     });
@@ -65,8 +65,8 @@ export default function Home() {
       <div className={styles.background}>
         {/* <Confetti width={width} height={height} /> */}
         <Confetti
-          width="390"
-          height="844"
+          // width="390"
+          // height="844"
           recycle={false}
           numberOfPieces={400}
           tweenDuration={10000}
