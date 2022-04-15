@@ -6,7 +6,11 @@
 } */
 
 .letter_area {
-    /* 여기할차례 */
+    position: absolute;
+    width: 95%;
+    top: 5%;
+    left: 5%;
+    transform: translate(-2.5%, -2.5%);
 }
 
 .wrapper h1 {
@@ -31,15 +35,18 @@
 
 }
 
-.form__contact fieldset {
+.form__contact > div {
+    text-align: initial;
+    width: 100%;
+    height: 100%;
     position: relative;
     margin: 0;
-    padding: 30px 30px 40px 80px;
+    padding: 20px 20px 20px 20px;
     border: none;
     border-radius: 0 20px 20px 0;
-    font: 24px 'Shadows Into Light', cursive;
+    font: 2vh 'Noto Sans KR', cursive;
     background: #fff linear-gradient(rgba(0,0,0,.1) 1px, transparent 0) 0 20px / 100% 40px;
-    
+    line-height: 28.1px;
 }
 
 .form__contact fieldset:after {
@@ -70,7 +77,10 @@
 
 }
 
-
+.letter_today{
+  font-size: 10px;
+  text-align: right;
+}
 
 
 

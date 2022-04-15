@@ -3,7 +3,7 @@ import { shuffle } from "../util/Util";
 
 export const initialState = {
   quizzes: [{ q: "", answers: [] }],
-  sizeOfQuiz: 2,
+  sizeOfQuiz: 4,
   isLock: true,
   numberOfQuiz: 0,
 };
@@ -31,10 +31,7 @@ export function quizReducer(state, action) {
       }
     case "WRONG":
       return {
-        quizzes: [{ q: "", answers: [] }],
-        sizeOfQuiz: 2,
-        isLock: true,
-        numberOfQuiz: 0,
+        ...initialState
       };
     case "UNLOCK":
       return {};

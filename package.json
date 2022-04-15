@@ -17,7 +17,8 @@
     "react-dom": "18.0.0",
     "react-use": "^17.3.2",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.1.2"
+    "semantic-ui-react": "^2.1.2",
+    "typeit-react": "^2.3.3"
   },
   "devDependencies": {
     "eslint": "8.12.0",

@@ -1,5 +1,4 @@
 export default function modalReducer(state, action) {
-  console.log(123123123);
   switch (action.type) {
     case "OPEN_MODAL":
       return { open: true, dimmer: action.dimmer };

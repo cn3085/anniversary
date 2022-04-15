@@ -41,6 +41,237 @@
                     "isAnswer" : false
                 }
             ]
+        },
+        {
+            "q" : "우리가 처음 만난 날은?",
+            "answers" : [
+                {
+                    "exam" : "1월 1일",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "4월 18일",
+                    "isAnswer" : true
+                },
+                {
+                    "exam" : "12월 25일",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "13월 13일",
+                    "isAnswer" : false
+                }
+            ]
+        },
+        {
+            "q" : "태주가 졸업한 고등학교는?",
+            "answers" : [
+                {
+                    "exam" : "인천고등학교",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "인제고등학교",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "광성고등학교",
+                    "isAnswer" : true
+                },
+                {
+                    "exam" : "검정고시 출신",
+                    "isAnswer" : false
+                }
+            ]
+        },
+        {
+            "q" : "태주가 제일 좋아하는 것은?",
+            "answers" : [
+                {
+                    "exam" : "회",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "떡볶이",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "쭈",
+                    "isAnswer" : true
+                },
+                {
+                    "exam" : "맥쭈",
+                    "isAnswer" : false
+                }
+            ]
+        },
+        {
+            "q" : "태주가 피아노학원에 가는 요일은?",
+            "answers" : [
+                {
+                    "exam" : "월요일",
+                    "isAnswer" : true
+                },
+                {
+                    "exam" : "화요일",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "수요일",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "목요일",
+                    "isAnswer" : false
+                }
+            ]
+        },
+        {
+            "q" : "태주가 제일 좋아하는 데이트 장소는?",
+            "answers" : [
+                {
+                    "exam" : "을지로",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "태릉입구",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "이태원",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "문래",
+                    "isAnswer" : true
+                }
+            ]
+        },
+        {
+            "q" : "태주의 보물 1호는?",
+            "answers" : [
+                {
+                    "exam" : "버티컬마우스",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "갤럭시s8 핸드폰",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "원스텝 훌러스",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "쭈구리",
+                    "isAnswer" : true
+                }
+            ]
+        },
+        {
+            "q" : "다음 발음 중 틀린 것은?",
+            "answers" : [
+                {
+                    "exam" : "훌라로이드",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "도나쓰",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "샤쓰",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "프렌치 프라이",
+                    "isAnswer" : true
+                }
+            ]
+        },
+        {
+            "q" : "단백질 함량이 가장 낮고 수분의 흡착력도 낮기 때문에 쿠키나 케이크를 만들 때 적합한 것은?",
+            "answers" : [
+                {
+                    "exam" : "강력분",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "박력분",
+                    "isAnswer" : true
+                },
+                {
+                    "exam" : "중력분",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "짜장면 시키신 분",
+                    "isAnswer" : false
+                }
+            ]
+        },
+        {
+            "q" : "다음 중 문자열 타입을 나타내는 것은?",
+            "answers" : [
+                {
+                    "exam" : "Integer",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "String",
+                    "isAnswer" : true
+                },
+                {
+                    "exam" : "Long",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "Char",
+                    "isAnswer" : false
+                }
+            ]
+        },
+        {
+            "q" : "우리가 갔던 여행지가 아닌 곳은?",
+            "answers" : [
+                {
+                    "exam" : "부산",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "경주",
+                    "isAnswer" : true
+                },
+                {
+                    "exam" : "춘천",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "전주",
+                    "isAnswer" : false
+                }
+            ]
+        },
+        {
+            "q" : "넌 그냥 나랑만 어울려 / 혼자여도 외롭지 않아 / 역시 [            ]",
+            "answers" : [
+                {
+                    "exam" : "넌 나랑만 어울려",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "나 하나보다 나은 우리 둘",
+                    "isAnswer" : true
+                },
+                {
+                    "exam" : "다시 태어나도 너여야 해 진짜로",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "사랑은 그런 게 아냐 바보야",
+                    "isAnswer" : false
+                }
+            ]
         }
     ]
 }

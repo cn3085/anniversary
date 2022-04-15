@@ -7,9 +7,12 @@ import Confetti from "react-confetti";
 import styles from "./index.module.css";
 import { Button, Icon, Modal } from "semantic-ui-react";
 import modalReducer from "../src/reducer/quiz_modal_reduce";
+import letterReducer from "../src/reducer/letter_reduce";
 import { quizReducer, initialState } from "../src/reducer/quiz_reduce";
 import Letter from "../src/component/Letter";
 import JSConfetti from "js-confetti";
+import TypeIt from "typeit-react";
+import Type from "../src/component/Type";
 
 export default function Home() {
   const { width, height } = useWindowSize();
@@ -23,20 +26,20 @@ export default function Home() {
 
   //quiz
   const [quizState, quizDispatch] = React.useReducer(quizReducer, initialState);
-  const { quizzes, numberOfQuiz, isLock } = quizState;
+  const { quizzes, numberOfQuiz, sizeOfQuiz, isLock } = quizState;
 
   //letter
-  const [isShowLetter, setIsShowLetter] = useState(false);
-  function toggleLetter() {
-    setIsShowLetter((isShow) => !isShow);
-  }
+  const [letterState, letterDispatch] = React.useReducer(letterReducer, {
+    isShowLetter: false,
+  });
+  const { isShowLetter } = letterState;
 
   const confettiRef = useRef(null);
-  function popWrongEmoji() {
+  function popWrongEmoji(emojis) {
     confettiRef.current.addConfetti({
-      emojis: ["🤔", "🤨", "😑", "😕", "☹", "😠", "😡"],
-      emojiSize: 128,
-      confettiNumber: 15,
+      emojis: emojis,
+      emojiSize: 48,
+      confettiNumber: 32,
       confettiRadius: 6,
     });
   }
@@ -51,9 +54,12 @@ export default function Home() {
     <React.StrictMode>
       <Head>
         <title>hello</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Palette+Mosaic&family=Rock+3D&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Palette+Mosaic&display=swap');
+        </style>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Oswald:wght@700&family=Palette+Mosaic&display=swap');
         </style>
       </Head>
       <div className={styles.background}>
@@ -67,10 +73,10 @@ export default function Home() {
         />
         <div className={styles.title_area}>
           <p className={styles.main_title}>2nd anniversary</p>
-          <p className={styles.sub_title}>대충축하문구</p>
+          <p className={styles.sub_title}>우리의 2주년 축하해!<br/>앞으로도 더더 사랑해!</p>
         </div>
         <div className={styles.photo_area}>
-          <BabyPhoto direction={"right"} img={"/images/jy.png"} delay={1000} />
+          <BabyPhoto direction={"right"} img={"/images/tj.png"} delay={1000} />
           <BounceButton img={"/images/moon.png"} />
           <BabyPhoto direction={"left"} img={"/images/jy.png"} delay={1500} />
         </div>
@@ -87,12 +93,13 @@ export default function Home() {
             </div>
           ) : (
             <>
-              <div className={styles.gift_list} onClick={() => toggleLetter()}>
+              <div className={styles.gift_list} onClick={() => letterDispatch()}>
                 💌
               </div>
-              <Letter isShowLetter={isShowLetter} />
+              <Letter isShowLetter={isShowLetter} letterDispatch={letterDispatch}/>
             </>
           )}
+          {!isLock && popWrongEmoji(["😎", "😙", "😝", "👩‍🎓", "👨‍🎓"])}
         </div>
 
         {isLock && (
@@ -102,24 +109,29 @@ export default function Home() {
             open={open}
             onClose={() => modalDispatch({ type: "CLOSE_MODAL" })}
           >
-            <Modal.Header>{quizzes[numberOfQuiz].q}</Modal.Header>
+            <Modal.Header>🤔 {quizzes[numberOfQuiz].q} ({numberOfQuiz + 1}/{sizeOfQuiz})</Modal.Header>
             <Modal.Content>
               {quizzes[numberOfQuiz].answers.map((ele, i) => (
-                <Button
-                  key={i}
-                  circular
-                  color="facebook"
-                  icon="facebook"
-                  onClick={
-                    ele.isAnswer
-                      ? () => quizDispatch({ type: "CORRECT" })
-                      : () => {
-                          quizDispatch({ type: "WRONG" });
-                          modalDispatch({ type: "CLOSE_MODAL" });
-                          popWrongEmoji();
+                <div class={styles.exam}>
+                  <Button
+                    key={i}
+                    circular
+                    color="grey"
+                    icon="angle right"
+                    onClick={
+                      ele.isAnswer
+                        ? () => {
+                          quizDispatch({ type: "CORRECT" });
                         }
-                  }
-                />
+                        : () => {
+                            quizDispatch({ type: "WRONG" });
+                            modalDispatch({ type: "CLOSE_MODAL" });
+                            popWrongEmoji(["🤔", "🤨", "😑", "😕", "☹", "😠", "😡"]);
+                          }
+                    }
+                  />
+                  <p>{ele.exam}</p>
+                </div>
               ))}
             </Modal.Content>
           </Modal>
