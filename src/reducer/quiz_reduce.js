@@ -19,20 +19,23 @@ export function quizReducer(state, action) {
       };
     case "CORRECT":
       if (state.numberOfQuiz + 1 === state.sizeOfQuiz) {
-        console.log('CORRECT-end:');
         return {
           ...initialState,
           isLock: false,
         };
       } else {
-        console.log('CORRECT-ing:');
         return {
           ...state,
           numberOfQuiz: state.numberOfQuiz + 1,
         };
       }
     case "WRONG":
-      return {};
+      return {
+        quizzes: [{ q: "", answers: [] }],
+        sizeOfQuiz: 2,
+        isLock: true,
+        numberOfQuiz: 0,
+      };
     case "UNLOCK":
       return {};
     default:
