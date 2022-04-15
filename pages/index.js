@@ -99,7 +99,6 @@ export default function Home() {
               <Letter isShowLetter={isShowLetter} letterDispatch={letterDispatch}/>
             </>
           )}
-          {!isLock && popWrongEmoji(["😎", "😙", "😝", "👩‍🎓", "👨‍🎓"])}
         </div>
 
         {isLock && (
