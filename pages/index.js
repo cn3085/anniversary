@@ -89,7 +89,7 @@ export default function Home() {
                 quizDispatch({ type: "START" });
               }}
             >
-              <Icon name="lock" />
+              🔒
             </div>
           ) : (
             <>
