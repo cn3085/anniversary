@@ -38,7 +38,7 @@ export default function Home() {
   function popWrongEmoji(emojis) {
     confettiRef.current.addConfetti({
       emojis: emojis,
-      emojiSize: 48,
+      emojiSize: 96,
       confettiNumber: 32,
       confettiRadius: 6,
     });
