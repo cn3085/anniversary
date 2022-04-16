@@ -53,7 +53,7 @@ export default function Home() {
   return (
     <React.StrictMode>
       <Head>
-        <title>hello</title>
+        <title>🎈쭈영💑태주🎈</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Palette+Mosaic&display=swap');
@@ -65,8 +65,8 @@ export default function Home() {
       <div className={styles.background}>
         {/* <Confetti width={width} height={height} /> */}
         <Confetti
-          // width="390"
-          // height="844"
+          width="360"
+          height="780"
           recycle={false}
           numberOfPieces={400}
           tweenDuration={10000}
