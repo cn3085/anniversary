@@ -272,6 +272,27 @@
                     "isAnswer" : false
                 }
             ]
+        },
+        {
+            "q" : "우리의 저녁 메뉴가 아닌 것은?",
+            "answers" : [
+                {
+                    "exam" : "쭈고추장찌개",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "떡볶이",
+                    "isAnswer" : true
+                },
+                {
+                    "exam" : "닭강정",
+                    "isAnswer" : false
+                },
+                {
+                    "exam" : "버터전복밥",
+                    "isAnswer" : false
+                }
+            ]
         }
     ]
 }
